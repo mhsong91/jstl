@@ -1,0 +1,13 @@
+package com.iot.test.service;
+
+import javax.servlet.http.HttpServletRequest;
+
+public interface ClassService {
+	
+	public void getClassList(HttpServletRequest req);
+	public void getClass(HttpServletRequest req);
+	public void InsertClass(HttpServletRequest req);
+	public void UpdateClass(HttpServletRequest req);
+	public void DeleteClass(HttpServletRequest req);
+
+}
