@@ -57,6 +57,14 @@ public class JspServlet extends HttpServlet {
 			uri = "/view/user/insertuser";
 			}
 			uri = "/view/user/insertuser";
+		}else if (uri.indexOf("user/delete") != -1) {
+			UserService us=new UserServiceImpl();
+			us.DeleteUser(req);
+			uri = "/view/user/list";
+		}else if (uri.indexOf("user/update") != -1) {
+			UserService us=new UserServiceImpl();
+			us.UpdateUser(req);
+			uri = "/view/user/list";
 		}
 		
 		uri = "/WEB-INF" + uri + ".jsp";

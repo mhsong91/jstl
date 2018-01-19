@@ -101,14 +101,51 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public int UpdateUser(UserInfo ui) {
+		String sql="update user_info set uiName=?,uiAge=?,address=? where uiId=?";
+		System.out.println(ui);
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result=0;
+		try {
+			con=DBCon.getCon();
+			ps=con.prepareStatement(sql);
+			ps.setString(1,ui.getUiName());
+			ps.setInt(2,ui.getUiAge());
+			ps.setString(3,ui.getAddress());
+			ps.setString(4,ui.getUiId());
+			result = ps.executeUpdate();
 		
-		return 0;
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+			}
+		return result;
 	}
 
 	@Override
 	public int DeleteUser(UserInfo ui) {
+		String sql="delete from user_info where uiId=?";
+		System.out.println(ui);
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result=0;
+		try {
+			con=DBCon.getCon();
+			ps=con.prepareStatement(sql);
+			ps.setString(1,ui.getUiId());
+			result = ps.executeUpdate();
 		
-		return 0;
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+			}
+		return result;
 	}
 
 	@Override

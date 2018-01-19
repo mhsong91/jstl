@@ -65,14 +65,20 @@ if(str == null){
 	</select>
 	<input type="text" name="searchStr" value="<%=str%>"><input type="submit" value="검색">
 </form>
-<h1>삭제를 하려면 꼭 입력하세요</h1>
+<h1 >삭제를 하려면 꼭 입력하세요(잘못입력시 오류 나요)</h1>
 <form action="<%=root%>/view/user/delete">
 
-<input type="text" name="name" placeholder="삭제하고 싶은 이름을 입력하세요">
+<input type="text" name="delete" placeholder="삭제하고 싶은 ID를 입력하세요">
 <button>진짜삭제</button>
 </form>
-
-
-<a href="<%=root%>/view/user/insertuser.jsp">유저 추가</a>
+<h1>업데이트하고 싶은 유저 Id를 입력하세요 잘못하면 오류나요 아이디는 수정 불가능합니다</h1>
+<form action="<%=root%>/view/user/update">
+<input type="text" name="name" placeholder="이름">
+<input type="text" name="age" placeholder="나이">
+<input type="text" name="address" placeholder="주소">
+<input type="text" name="update" placeholder="업데이트하고 싶은 유저ID를 입력하세요">
+<button>진짜수정</button>
+</form>
+<a href="<%=root%>/view/user/insertuser.jsp"><h1>유저 추가<h1></a>
 </body>
 </html>

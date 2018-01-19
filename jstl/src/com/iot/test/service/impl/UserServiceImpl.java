@@ -59,12 +59,26 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void UpdateUser(HttpServletRequest req) {
-		
+		UserInfo ui= new UserInfo();
+		String name=req.getParameter("name");
+		int age=Integer.parseInt(req.getParameter("age"));
+		String address=req.getParameter("address");
+		String update=req.getParameter("update");
+		ui.setUiName(name);
+		ui.setUiAge(age);
+		ui.setAddress(address);
+		ui.setUiId(update);
+		System.out.println(update);
+		req.setAttribute("update",udao.UpdateUser(ui));
 	}
 
 	@Override
 	public void DeleteUser(HttpServletRequest req) {
-		
+		UserInfo ui= new UserInfo();
+		String delete=req.getParameter("delete");
+		ui.setUiId(delete);
+		System.out.println(delete);
+		req.setAttribute("delete",udao.DeleteUser(ui));
 	}
 
 
