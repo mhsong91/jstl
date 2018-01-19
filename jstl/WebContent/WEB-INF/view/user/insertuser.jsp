@@ -5,17 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>인서트 유저라고 십말</title>
+<title>인서트 유저입니다</title>
 </head>
+<%
+%>
 <body>
-<form action="<%=root%>/view/user/insert">
-<input type="text" name="ai" value="이름">
-<input type="text" name="ai" value="나이">
-<input type="text" name="ai" value="아이디">
-<input type="text" name="ai" value="비밀번호">
-<input type="text" name="ai" value="주소">
-
-<input type="submit" value="삽입">
+<form action="<%=root%>/view/user/insertuser">
+<h1>무조건 인서트 값을 입력하세요 안그럼 에러나요</h1>
+<input type="text" name="name" placeholder="이름">
+<input type="text" name="age" placeholder="나이">
+<input type="text" name="id" placeholder="아이디">
+<input type="text" name="pwd" placeholder="비밀번호">
+<input type="text" name="address" placeholder="주소">
+<input type="text" name="cino" placeholder="반번호">
+<button>삽입</button>
 </form>
 </body>
+
 </html>

@@ -23,7 +23,7 @@ public class Exam {
 //			while(it.hasNext()) {
 //				String key=(String) it.next();
 //				System.out.println(key+"="+prop.getProperty(key));
-				Class.forName(prop.getProperty("Driver"));
+				Class.forName(prop.getProperty("driver"));
 				String url=prop.getProperty("url");
 				String id=prop.getProperty("id");
 				String pwd=prop.getProperty("pwd");

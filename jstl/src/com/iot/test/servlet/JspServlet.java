@@ -51,16 +51,17 @@ public class JspServlet extends HttpServlet {
 			CustomerService cs= new CustomerServiceImpl();
 			cs.setCustomerList(req);
 		}else if (uri.indexOf("user/insertuser") != -1) {
-			
-			UserService us=new UserServiceImpl();
+			if(req.getParameter("age")!=null) {
+			UserService us = new UserServiceImpl();
 			us.InsertUser(req);
 			uri = "/view/user/insertuser";
-		}	
+			}
+			uri = "/view/user/insertuser";
+		}
 		
 		uri = "/WEB-INF" + uri + ".jsp";
 		
-		RequestDispatcher rd = req.getRequestDispatcher(uri);	
-	
+		RequestDispatcher rd = req.getRequestDispatcher(uri);
 		rd.forward(req, res);
 	}
 

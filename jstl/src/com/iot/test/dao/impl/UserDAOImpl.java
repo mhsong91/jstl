@@ -7,8 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.catalina.connector.Request;
+
 import com.iot.test.common.DBCon;
 import com.iot.test.dao.UserDAO;
+import com.iot.test.service.UserService;
+import com.iot.test.service.impl.UserServiceImpl;
 import com.iot.test.utils.DBUtil;
 import com.iot.test.vo.UserInfo;
 
@@ -43,6 +47,7 @@ public class UserDAOImpl implements UserDAO{
 				ui2.setUiAge(rs.getInt("UiAge"));
 				ui2.setUiId(rs.getString("UiId"));
 				ui2.setUiPwd(rs.getString("UiPwd"));
+				ui2.setCiNo(rs.getInt("CiNo"));
 				userList.add(ui2);
 			}
 	
@@ -66,8 +71,32 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public int InsertUser(UserInfo ui) {
+		String sql="insert into user_info(uiName,uiAge,uiId,uiPwd,address,cino) values(?,?,?,?,?,?)";
+		System.out.println(sql);
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result=0;
+		try {
+			con=DBCon.getCon();
+			ps=con.prepareStatement(sql);
+			ps.setString(1,ui.getUiName());
+			ps.setInt(2,ui.getUiAge());
+			ps.setString(3,ui.getUiId());
+			ps.setString(4,ui.getUiPwd());
+			ps.setString(5,ui.getAddress());
+			ps.setInt(6,ui.getCiNo());
+			result = ps.executeUpdate();
 		
-		return 0;
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+			}
+		
+		
+		return result;
 	}
 
 	@Override

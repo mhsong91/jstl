@@ -1,6 +1,10 @@
 package com.iot.test.service.impl;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.google.gson.Gson;
 import com.iot.test.dao.UserDAO;
@@ -32,6 +36,24 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void InsertUser(HttpServletRequest req) {
+		UserInfo ui= new UserInfo();
+		String name=req.getParameter("name");
+		System.out.println(name);
+		System.out.println(req.getParameter("age"));
+		int age=Integer.parseInt(req.getParameter("age"));
+		String id=req.getParameter("id");
+		String pwd=req.getParameter("pwd");
+		String address=req.getParameter("address");
+		int cino=Integer.parseInt(req.getParameter("cino"));
+		ui.setUiName(name);
+		ui.setUiAge(age);
+		ui.setUiId(id);
+		ui.setUiPwd(pwd);
+		ui.setAddress(address);
+		ui.setCiNo(cino);
+			
+		req.setAttribute("insert",udao.InsertUser(ui));
+		
 		
 	}
 

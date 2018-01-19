@@ -41,6 +41,7 @@ if(str == null){
 		<th>나이</th>
 		<th>ID</th>
 		<th>주소</th>
+		<th>반번호</th>
 	</tr>
 	<c:forEach items="${userList}" var="ui">	
 	<tr>
@@ -48,6 +49,7 @@ if(str == null){
 		<td>${ui.uiAge }</td>
 		<td>${ui.uiId }</td>
 		<td>${ui.address }</td>			
+		<td>${ui.ciNo}</td>
 	</tr>
 	</c:forEach>
 </table>
@@ -59,12 +61,18 @@ if(str == null){
 		<option value="uiAge">나이</option>
 		<option value="uiId">아이디</option>
 		<option value="address">주소</option>
+		<option value="cino">반번호</option>
 	</select>
 	<input type="text" name="searchStr" value="<%=str%>"><input type="submit" value="검색">
 </form>
+<h1>삭제를 하려면 꼭 입력하세요</h1>
+<form action="<%=root%>/view/user/delete">
+
+<input type="text" name="name" placeholder="삭제하고 싶은 이름을 입력하세요">
+<button>진짜삭제</button>
+</form>
 
 
-
-<a href="<%=root%>/view/user/insertuser">유저 추가</a>
+<a href="<%=root%>/view/user/insertuser.jsp">유저 추가</a>
 </body>
 </html>
