@@ -45,6 +45,7 @@ if(str == null){
 	</tr>
 	<c:forEach items="${userList}" var="ui">	
 	<tr>
+	
 		<td>${ui.uiName }</td>
 		<td>${ui.uiAge }</td>
 		<td>${ui.uiId }</td>

@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.connector.Request;
+import org.apache.log4j.Logger;
 
 import com.iot.test.common.DBCon;
 import com.iot.test.dao.UserDAO;
-import com.iot.test.service.UserService;
-import com.iot.test.service.impl.UserServiceImpl;
 import com.iot.test.utils.DBUtil;
 import com.iot.test.vo.UserInfo;
 
 public class UserDAOImpl implements UserDAO{
 
+	private static Logger log=Logger.getLogger(UserDAOImpl.class);
+	
 	@Override
 	public List<UserInfo> selectUserList(UserInfo ui) {
 		List<UserInfo> userList = new ArrayList<UserInfo>(); 
@@ -25,11 +25,12 @@ public class UserDAOImpl implements UserDAO{
 		if(ui!=null) {
 			sql += " and uiname like ?";
 		}
-		
+		System.out.println(ui);
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
+			log.info("DAO 시작");
 			con=DBCon.getCon();
 			ps=con.prepareStatement(sql);
 			if(ui!=null) {
@@ -60,6 +61,7 @@ public class UserDAOImpl implements UserDAO{
 			DBUtil.close(ps);
 			DBUtil.close(rs);
 		}
+		log.info("DAO 종료");
 		return userList;
 	}
 

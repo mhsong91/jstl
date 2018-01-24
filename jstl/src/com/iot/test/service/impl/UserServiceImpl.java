@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void getUserList(HttpServletRequest req) {
 		UserInfo ui=null;
-		String json=req.getParameter("param");
+		String json=req.getParameter("searchStr");
 		
 		if(json!=null) {
 //			ui=gs.fromJson(json,UserInfo.class);
